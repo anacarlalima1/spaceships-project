@@ -10,6 +10,7 @@ use App\SpaceShip\Domain\DTO\SpaceshipDTO;
 use App\SpaceShip\Infrastructure\Http\Requests\SpaceshipRequest;
 use App\SpaceShip\Infrastructure\Repositories\SpaceshipApiRepository;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class SpaceshipController extends Controller
 {
@@ -38,7 +39,7 @@ class SpaceshipController extends Controller
 
     public function save(SpaceshipRequest $request): JsonResponse
     {
-        $SpaceShipDTO = new SpaceshipDTO($request->validated());
+        $SpaceShipDTO = new SpaceshipDTO($request->all());
         $this->SpaceshipCreateUseCase->createSpaceShip($SpaceShipDTO);
 
         return response()->json(['message' => 'Espaçonave criada com sucesso!'], 201);
@@ -46,7 +47,7 @@ class SpaceshipController extends Controller
 
     public function update(SpaceshipRequest $request, int $id): JsonResponse
     {
-        $SpaceShipDTO = new SpaceshipDTO($request->validated());
+        $SpaceShipDTO = new SpaceshipDTO($request->all());
         $this->SpaceshipCreateUseCase->updateSpaceShip($id, $SpaceShipDTO);
 
         return response()->json(['message' => 'Espaçonave atualizada com sucesso!'], 200);

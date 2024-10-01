@@ -6,6 +6,7 @@ use App\SpaceShip\Domain\DTO\SpaceshipDTO;
 use App\SpaceShip\Domain\DTO\SpaceshipOutputDTO;
 use App\SpaceShip\Domain\Repositories\SpaceshipRepositoryInterface;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SpaceshipApiRepository implements SpaceshipRepositoryInterface
 {
@@ -26,18 +27,14 @@ class SpaceshipApiRepository implements SpaceshipRepositoryInterface
 
         return null;
     }
-    public function findById(int $id): ?SpaceshipDTO
+    public function findById(int $id): ?SpaceshipOutputDTO
     {
         $response = Http::get("{$this->baseUrl}/{$id}");
 
         if ($response->successful()) {
             $data = $response->json();
 
-            return new SpaceshipOutputDTO(
-                $data['name'] ?? 'Unknown',
-                $data['model'] ?? 'Model not available',  // Tratar ausência de model
-                $data['manufacturer'] ?? 'Unknown'
-            );
+            return new SpaceshipOutputDTO($data);
         }
 
         return null;
@@ -59,6 +56,10 @@ class SpaceshipApiRepository implements SpaceshipRepositoryInterface
     {
         $response = Http::delete("{$this->baseUrl}/{$id}");
 
-        return $response->successful();
+        if ($response->successful()) {
+            return true;
+        }
+
+        return false;
     }
 }

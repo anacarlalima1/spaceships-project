@@ -8,21 +8,36 @@ use App\Shared\Domain\DTO\AbstractDTO;
 
 class SpaceshipDTO extends AbstractDTO implements InterfaceDTO
 {
-    public function __construct(
-        public string $name,
-        public ?string $model,
-        public ?string $manufacturer,
-        public ?float $cost,
-        public ?float $length,
-        public ?int $max_atmosphering_speed,
-        public ?int $crew,
-        public ?int $passengers,
-        public ?float $cargo_capacity,
-        public ?string $consumables,
-        public ?float $hyperdrive_rating,
-        public ?int $MGLT,
-        public ?string $SpaceShip_class
-    ) {
+    public $model;
+    public $name;
+    public $SpaceShip_class;
+    public $MGLT;
+    public $hyperdrive_rating;
+    public $consumables;
+    public $cargo_capacity;
+    public $crew;
+    public $passengers;
+    public $max_atmosphering_speed;
+    public $cost;
+    public $manufacturer;
+    public $length;
+
+    public function __construct(array $data)
+    {
+        $this->name = $data['name'] ?? null;
+        $this->model = $data['model'] ?? null;
+        $this->manufacturer = $data['manufacturer'] ?? null;
+        $this->cost = isset($data['cost']) ? (float) $data['cost'] : null;
+        $this->length = isset($data['length']) ? (float) $data['length'] : null;
+        $this->max_atmosphering_speed = isset($data['max_atmosphering_speed']) ? (int) $data['max_atmosphering_speed'] : null;
+        $this->crew = isset($data['crew']) ? (int) $data['crew'] : null;
+        $this->passengers = isset($data['passengers']) ? (int) $data['passengers'] : null;
+        $this->cargo_capacity = isset($data['cargo_capacity']) ? (float) $data['cargo_capacity'] : null;
+        $this->consumables = $data['consumables'] ?? null;
+        $this->hyperdrive_rating = isset($data['hyperdrive_rating']) ? (float) $data['hyperdrive_rating'] : null;
+        $this->MGLT = isset($data['MGLT']) ? (int) $data['MGLT'] : null;
+        $this->SpaceShip_class = $data['SpaceShip_class'] ?? null;
+
         $this->validate();
     }
 

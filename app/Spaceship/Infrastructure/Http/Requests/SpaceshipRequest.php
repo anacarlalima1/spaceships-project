@@ -13,15 +13,12 @@ class SpaceshipRequest extends FormRequest
     }
     public function rules(): array
     {
-        return [
-            ...SpaceshipDTO::rules()
 
-        ];
+        return SpaceshipDTO::rules();
+
     }
     public function messages(): array
     {
-        return [
-            ...SpaceshipDTO::messages()
-        ];
+        return SpaceshipDTO::messages();
     }
 }

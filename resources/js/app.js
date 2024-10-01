@@ -1,8 +1,16 @@
 import { createApp } from 'vue';
-import SpaceshipList from './components/SpaceshipList.vue';
+import axios from 'axios';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 
-const app = createApp({});
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
-app.component('spaceship-list', SpaceshipList);
+const app = createApp(App);
+
+app.config.globalProperties.$axios = axios;
+
+app.use(router);
+app.use(store);
 
 app.mount('#app');
