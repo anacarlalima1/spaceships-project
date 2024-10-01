@@ -1,64 +1,155 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 🚀 Starship Management System
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Bem-vindo ao **Starship Management System**! Este projeto foi desenvolvido como parte de um teste técnico, utilizando o padrão **Domain-Driven Design (DDD)**. Ele simula um sistema de gerenciamento de espaçonaves, onde é possível visualizar, adicionar, editar e remover espaçonaves através de uma interface desenvolvida com Vue.js e Tailwind CSS.
 
-## About Laravel
+## 🛠 Tecnologias Utilizadas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **PHP 7.4**: Linguagem de programação principal utilizada no backend.
+- **Laravel 8.x**: Framework PHP utilizado para o desenvolvimento da API e implementação do padrão **DDD**.
+- **JSON Server**: Ferramenta usada para simular uma API RESTful com base em um arquivo JSON.
+- **Vue.js**: Framework JavaScript utilizado para o desenvolvimento do frontend.
+- **Vuex**: Biblioteca para gerenciamento de estado no Vue.js.
+- **Tailwind CSS**: Framework CSS utilizado para estilização e responsividade.
+- **Axios**: Biblioteca para realizar requisições HTTP no frontend.
+- **Vite**: Ferramenta de build rápida para Vue.js.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ⚙️ Funcionalidades
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Listagem de Espaçonaves**: Permite visualizar todas as espaçonaves registradas no sistema.
+- **Adicionar Espaçonaves**: Interface para cadastrar novas espaçonaves.
+- **Editar Espaçonaves**: Funcionalidade para editar dados de espaçonaves existentes.
+- **Remover Espaçonaves**: Permite excluir espaçonaves indesejadas do sistema.
+- **Modal de Confirmação**: Ao excluir uma espaçonave, um modal de confirmação é exibido.
 
-## Learning Laravel
+## 🧱 Arquitetura do Projeto - DDD
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+O projeto foi desenvolvido utilizando o padrão **Domain-Driven Design (DDD)**, que organiza o código em camadas claras e bem definidas.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📂 Estrutura do Projeto
 
-## Laravel Sponsors
+```bash
+.
+├── app/
+│   ├── SpaceShip/
+│   │   ├── Application/          # Camada de aplicação (use cases)
+│   │   ├── Domain/               # Camada de domínio (entidades, DTOs, interfaces)
+│   │   ├── Infrastructure/       # Camada de infraestrutura (repositorios, controllers, integração com APIs)
+│   │   └── Http/                 # Controladores HTTP para lidar com requests
+├── resources/
+│   ├── js/                       # Arquivos frontend Vue.js
+│   ├── views/                    # Views blade se necessário
+├── routes/
+│   ├── web.php                   # Definições das rotas web da aplicação
+├── database/
+│   ├── db.json                   # Arquivo JSON utilizado pelo JSON Server para simular a API
+└── README.md                     # Este arquivo
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Domain-Driven Design
 
-### Premium Partners
+- **Camada de Domínio**: Define as regras de negócio e as entidades como DTOs (Data Transfer Objects) e interfaces de repositório.
+- **Camada de Aplicação**: Contém os "use cases" que orquestram as operações de negócio.
+- **Camada de Infraestrutura**: Implementação dos repositórios e lógica de persistência, além da integração com serviços externos.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## 🚀 Como Executar o Projeto
 
-## Contributing
+### 1. Clone o repositório
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/anacarlalima1/starships.git
+cd starships-project
+```
 
-## Code of Conduct
+### 2. Instale as dependências do Laravel
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Para instalar as dependências do Laravel, execute o seguinte comando:
 
-## Security Vulnerabilities
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Configure o arquivo `.env`
 
-## License
+Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente necessárias, como a URL da API do JSON Server.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+```
+
+Em seguida, gere a chave da aplicação:
+
+```bash
+php artisan key:generate
+```
+
+### 4. Instale as dependências do frontend
+
+```bash
+npm install
+npm run dev
+```
+
+### 5. Inicie o servidor Laravel
+
+Agora, inicie o servidor local do Laravel:
+
+```bash
+php artisan serve
+```
+
+Isso deve iniciar o servidor na URL:
+
+```bash
+http://localhost:8000
+```
+
+### 6. Inicie o JSON Server
+
+Inicie o JSON Server para servir o arquivo `db.json`:
+
+```bash
+json-server --watch database/db.json --port 3000
+```
+
+Isso deve iniciar a API simulada na URL:
+
+```bash
+http://localhost:3000
+```
+
+### 7. Executando o Frontend
+
+O frontend é construído utilizando Vue.js e Vite. Para rodar o frontend, use o comando:
+
+```bash
+npm run dev
+```
+
+Isso deve abrir o frontend automaticamente no navegador.
+
+### 8. Acesse o Projeto
+
+Agora, você pode acessar a interface web no endereço `http://localhost:8000` e utilizar as funcionalidades de listagem, adição, edição e exclusão de espaçonaves.
+
+## 🛠 Comandos Úteis
+
+- **Iniciar o servidor Laravel**: `php artisan serve`
+- **Iniciar o JSON Server**: `json-server --watch database/db.json --port 3000`
+- **Compilar o frontend com Vite**: `npm run dev`
+
+## 📖 Padrões Utilizados
+
+### Domain-Driven Design (DDD)
+Este projeto foi desenvolvido utilizando o **DDD (Domain-Driven Design)** para organizar o código em camadas claras e definir as responsabilidades de cada uma delas. Com isso, o código se torna mais fácil de manter, escalar e testar.
+
+- **Camada de Domínio**: Regras de negócio e entidades principais, como o `SpaceshipDTO` e interfaces de repositórios.
+- **Camada de Aplicação**: Contém os casos de uso, como a criação, edição e exclusão de espaçonaves.
+- **Camada de Infraestrutura**: Contém a lógica que comunica com a API externa (JSON Server), como o repositório `SpaceshipApiRepository`.
+
+## 🤝 Contribuições
+
+Sinta-se à vontade para contribuir com melhorias ou correções para este projeto! Basta abrir um **pull request** ou relatar um **issue**.
+
+---
+
+Com isso, o projeto estará configurado e pronto para uso!
