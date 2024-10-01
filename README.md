@@ -1,4 +1,4 @@
-# 🚀 Starship Management System
+# 🚀 Spaceship Management System
 
 Bem-vindo ao **Starship Management System**! Este projeto foi desenvolvido como parte de um teste técnico, utilizando o padrão **Domain-Driven Design (DDD)**. Ele simula um sistema de gerenciamento de espaçonaves, onde é possível visualizar, adicionar, editar e remover espaçonaves através de uma interface desenvolvida com Vue.js e Tailwind CSS.
 
